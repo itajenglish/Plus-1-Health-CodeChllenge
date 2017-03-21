@@ -22,6 +22,3 @@ bdPars = require('body-parser');
   });
 
 // Define Routes
-app.get('', (req, res, next) => {
-  res.send('Hello');
-});
