@@ -1,5 +1,5 @@
 {
-  "name": "Plus-1-Health-CodeChllenge",
+  "name": "Plus-1-Health-Test",
   "version": "1.0.0",
   "description": "",
   "main": "apps.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/itajenglish/Plus-1-Health-CodeChllenge.git"
+    "url": "git+https://github.com/itajenglish/Plus-1-Health-Test.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/itajenglish/Plus-1-Health-CodeChllenge/issues"
+    "url": "https://github.com/itajenglish/Plus-1-Health-Test/issues"
   },
-  "homepage": "https://github.com/itajenglish/Plus-1-Health-CodeChllenge#readme",
+  "homepage": "https://github.com/itajenglish/Plus-1-Health-Test#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
