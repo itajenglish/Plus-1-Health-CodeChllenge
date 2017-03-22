@@ -3,11 +3,13 @@ const express = require('express'),
 app = express(),
 mustache = require('mustache-express'),
 methodOverride = require('method-override'),
+morgan = require('morgan');
 bdPars = require('body-parser');
 
 //configure express and related packages
   app.engine('html',mustache());
   app.set('view engine','html');
+  app.use(morgan('dev'));
   app.use(express.static(__dirname+'/public'));
   app.set('views',__dirname+'/views');
   app.use(methodOverride('_method')); //method override
