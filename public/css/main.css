@@ -1,0 +1,13 @@
+nav .brand-logo {
+  padding-left: 20px;
+}
+
+.btn {
+  background: yellow;
+  color: black;
+}
+
+.btn:hover {
+  background-color: red;
+  color: white;
+}

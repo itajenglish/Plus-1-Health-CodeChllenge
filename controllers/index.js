@@ -10,10 +10,10 @@ router.use('/galleries', require('./galleries'));
 router.get('/', (req, res, next) => {
   //Get all galleries from database
   gallery.all((err, galleries) => {
-    //If an error happend send error in response and exit.
+    //If an error occured send error in response and exit.
     if(err) return res.send(err);
     //Render index page with all galleries
-    res.render('gallery/index', galleries);
+    res.render('gallery/index', {galleries});
   });
 });
 
