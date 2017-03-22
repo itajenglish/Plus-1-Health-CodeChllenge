@@ -7,7 +7,7 @@ bdPars = require('body-parser');
 
 //configure express and related packages
   app.engine('html',mustache());
-  app.set('view','html');
+  app.set('view engine','html');
   app.use(express.static(__dirname+'/public'));
   app.set('views',__dirname+'/views');
   app.use(methodOverride('_method')); //method override
@@ -21,4 +21,5 @@ bdPars = require('body-parser');
     console.log(`Server running at http://localhost:${PORT}`);
   });
 
-// Define Routes
+// Require All Routes
+app.use(require('./controllers/index'));
