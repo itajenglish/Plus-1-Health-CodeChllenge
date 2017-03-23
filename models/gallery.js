@@ -1,6 +1,12 @@
 const db = require('../db/connectdb');
 const error = require('throw.js');
 
+/*
+cb is the callback function passed down as a param when the model is called.
+It takes two params error and the data returned from the db query.
+example. cb(error, data)
+*/
+
 //Creates new gallery in database.
 exports.create = (name, cb) => {
   db.none('INSERT INTO Galleries name = $1', name)
