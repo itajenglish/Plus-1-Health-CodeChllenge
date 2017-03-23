@@ -11,3 +11,8 @@ nav .brand-logo {
   background-color: red;
   color: white;
 }
+
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid red;
+  box-shadow: 0 1px 0 0 red;
+}
