@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
     //If an error occured send error in response and exit.
     if(err) return res.send(err);
     //Render index page with all galleries
-    res.render('gallery/index', {galleries});
+    res.render('gallery/index', { galleries });
   });
 });
 
