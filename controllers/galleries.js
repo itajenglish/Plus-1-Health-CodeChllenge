@@ -22,15 +22,18 @@ router.get('/new', (req, res, next) => {
 router.get('/:id', (req, res, next) => {
   const id = req.params.id;
 
-  gallery.get(id, (err, images) => {
+  gallery.get(id, (err, { name }, images) => {
     //If error send error and exit.
     if (err) return res.status(500).send(err);
 
+    const gallery = { id, name, images };
+
     //Renders Page To Add NEW Gallery
-    res.render('gallery/show');
+    res.render('gallery/show', {gallery});
   })
 })
 
+//Deletes Gallery From model and redirect user to index.
 router.delete('/:id', (req, res, next) => {
   const id = req.params.id;
    console.log('route hit');

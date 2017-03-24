@@ -33,9 +33,27 @@ exports.all = (cb) => {
   });
 };
 
+//Grabs information for specifc gallery by it's id.
 exports.get = (id, cb) => {
-  cb(null);
-}
+  //Grab name for gallery.
+  db.one('SELECT name FROM Galleries WHERE id = $1', id)
+  .then(name => {
+    //Grab Images for specific Gallery
+    db.any('SELECT * FROM Images where id = $1', id)
+    .then(images => {
+      //Send Name and Images back to controller.
+      cb(null, name, images);
+    })
+    .catch(err => {
+      console.log(err)
+      cb(new error.InternalServerError());
+    });//End of Error for image query.
+  })
+  .catch(err => {
+    console.log(err)
+    cb(new error.InternalServerError());
+  });// End of error for gallery query.
+};
 
 exports.delete = (id, cb) => {
   cb(null)
