@@ -9,18 +9,22 @@ example. cb(error, data)
 
 //Creates new gallery in database.
 exports.create = (name, cb) => {
-  db.none('INSERT INTO Galleries name = $1', name)
-  .then(() => {
-    console.log('New Gallery Added!');
+  db.one('INSERT INTO Galleries (name) VALUES ($1) returning id', name)
+  .then((gallery) => {
+    //Return New Gallary id to controller;
+    const id = gallery.id;
+    cb(null, id)
   })
   .catch(err => {
     console.log(err);
+    //Return Error msg to controller
+    cb(new error.InternalServerError());
   });
 };
 
 //Grabs all galleries from database.
 exports.all = (cb) => {
-  db.any('SELECT * FROM Galleries')
+  db.any('SELECT * FROM Galleries ORDER BY id DESC')
   .then(galleries => {
     cb(null, galleries);
   })
