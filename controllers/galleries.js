@@ -9,14 +9,14 @@ router.post('/', (req, res, next) => {
     //If error send error and exit.
     if(err) return res.status(500).send(err);
     //Redirect User To New Gallery
-    res.redirect(`/Galleries/${id}`)
-  })
-})
+    res.redirect(`/Galleries/${id}`);
+  });
+});
 
 //Renders Page To Add NEW Gallery
 router.get('/new', (req, res, next) => {
   res.render('gallery/new');
-})
+});
 
 //Route calls gallery model to get relevent information for specfic gallery.
 router.get('/:id', (req, res, next) => {
@@ -27,11 +27,11 @@ router.get('/:id', (req, res, next) => {
     if (err) return res.status(500).send(err);
 
     const gallery = { id, name, images };
-
-    //Renders Page To Add NEW Gallery
-    res.render('gallery/show', {gallery});
-  })
-})
+    console.log(gallery);
+    //Renders Page To Show Specifc Gallery
+    res.render('gallery/show', { gallery });
+  });
+});
 
 //Deletes Gallery From model and redirect user to index.
 router.delete('/:id', (req, res, next) => {
@@ -41,7 +41,7 @@ router.delete('/:id', (req, res, next) => {
     if (err) return res.send(500, err);
 
     res.redirect('/');
-  })
-})
+  });
+});
 
 module.exports = router;

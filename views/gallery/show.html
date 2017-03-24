@@ -12,13 +12,13 @@
 <!-- Navbar -->
 <header>
   <nav>
-    <div class="nav-wrapper red">
+    <div class="nav-wrapper">
       <a href="/" class="brand-logo">+1 Health</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li>
           {{#gallery}}
           <form action="/galleries/{{id}}?_method=delete" method="POST">
-            <button class="btn" type="submit">Delete Gallary</button>
+            <button class="btn red" type="submit">Delete Gallary</button>
           </form>
           {{/gallery}}
         </li>
@@ -35,13 +35,30 @@
     <div class="row">
       <div class="col s12">
         {{#gallery}}
-        <h1 class="center">{{name}}</h1>
-        {{/gallery}}
+        <h1 class="center">{{name}} Gallery</h1> {{/gallery}}
       </div>
       </row>
       <div class="row">
-
         <div class="col s12">
+
+          <div class="row">
+            <div class="col s12 m7">
+              {{#gallery.images}}
+              <div class="card">
+                <div class="card-image">
+                  <img src="images/sample-1.jpg">
+                  <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                  <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                  <a href="#">This is a link</a>
+                </div>
+              </div>
+              {{/gallery.images}}
+            </div>
+          </div>
 
         </div>
       </div>

@@ -1,3 +1,7 @@
+.nav-wrapper{
+  background-color: rgb(77,182,186);
+}
+
 nav .brand-logo {
   padding-left: 20px;
 }
@@ -8,7 +12,7 @@ nav .brand-logo {
 }
 
 .btn:hover {
-  background-color: red;
+  background-color: rgb(77,182,186);
   color: white;
 }
 
