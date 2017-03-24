@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const gallery = require('../models/gallery');
 
-//Route call gallery model to create a new gallery in db.
+//Route calls gallery model to create a new gallery in db.
 router.post('/', (req, res, next) => {
   const name = req.body.name;
   gallery.create(name, (err, id) => {
@@ -16,6 +16,29 @@ router.post('/', (req, res, next) => {
 //Renders Page To Add NEW Gallery
 router.get('/new', (req, res, next) => {
   res.render('gallery/new');
+})
+
+//Route calls gallery model to get relevent information for specfic gallery.
+router.get('/:id', (req, res, next) => {
+  const id = req.params.id;
+
+  gallery.get(id, (err, images) => {
+    //If error send error and exit.
+    if (err) return res.status(500).send(err);
+
+    //Renders Page To Add NEW Gallery
+    res.render('gallery/show');
+  })
+})
+
+router.delete('/:id', (req, res, next) => {
+  const id = req.params.id;
+   console.log('route hit');
+  gallery.delete(id, (err) => {
+    if (err) return res.send(500, err);
+
+    res.redirect('/');
+  })
 })
 
 module.exports = router;

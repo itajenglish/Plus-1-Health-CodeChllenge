@@ -33,6 +33,14 @@ exports.all = (cb) => {
   });
 };
 
+exports.get = (id, cb) => {
+  cb(null);
+}
+
+exports.delete = (id, cb) => {
+  cb(null)
+}
+
 //Update Gallery Name in database.
 exports.update = (id, name, cb) => {
   db.none('UPDATE Galleries set name = $1 WHERE id = $2', name, id)

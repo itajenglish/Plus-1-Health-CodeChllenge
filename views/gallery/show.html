@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plus One Health</title>
+  <link rel="stylesheet" href="/css/materialize.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<!-- Navbar -->
+<header>
+  <nav>
+    <div class="nav-wrapper red">
+      <a href="/" class="brand-logo">+1 Health</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+          <form action="/galleries/5?_method=delete" method="POST">
+            <button class="btn" type="submit">Delete Gallary</button>
+          </form>
+        </li>
+        <li><a href="/galleries/new" class="waves-effect waves-light btn">Edit Gallary</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<body>
+  <!-- Main Content -->
+  <div id="main">
+
+    <div class="row">
+      <div class="col s12">
+        {{#galleries}}
+        <h1 class="center">{{name}}</h1>
+        {{/galleries}}
+      </div>
+      </row>
+      <div class="row">
+
+        <div class="col s12">
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <!-- Script Files -->
+  <script src="/scripts/jquery.js"></script>
+  <script src="/scripts/materialize.min.js"></script>
+  <script src="/scripts/main.js"></script>
+</body>
+
+</html>
