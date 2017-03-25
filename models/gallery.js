@@ -55,11 +55,19 @@ exports.get = (id, cb) => {
   });// End of error for gallery query.
 };
 
+//Deletes Gallery and Images by Gallery id;
 exports.delete = (id, cb) => {
-  cb(null);
+  db.none('DELETE FROM Images WHERE gallery_id = $1; DELETE FROM Galleries WHERE id = $1', id)
+  .then(() => {
+    cb(null);
+  })
+  .catch(err => {
+    console.log(err);
+    cb(new error.InternalServerError());
+  });
 };
 
-//Update Gallery Name in database.
+//Update Gallery Name in database by it's id.
 exports.update = (id, name, cb) => {
   db.none('UPDATE Galleries set name = $1 WHERE id = $2', [name, id])
   .then(() => {

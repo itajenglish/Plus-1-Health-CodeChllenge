@@ -64,10 +64,12 @@ router.get('/:id/edit', (req, res , next) => {
 //Route calls gallery model to delete gallery and realted images.
 router.delete('/:id', (req, res, next) => {
   const id = req.params.id;
-   console.log('route hit');
-  gallery.delete(id, (err) => {
-    if (err) return res.send(500, err);
 
+  gallery.delete(id, (err) => {
+    //If error send error and exit.
+    if (err) return res.status(500).send(err);
+
+    //Redirect to index page after Successful delte.
     res.redirect('/');
   });
 });
