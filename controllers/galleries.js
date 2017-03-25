@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const gallery = require('../models/gallery');
+const image = require('../models/image');
 
 //Route calls gallery model to create a new gallery in db.
 router.post('/', (req, res, next) => {
@@ -68,6 +69,19 @@ router.delete('/:id', (req, res, next) => {
     if (err) return res.send(500, err);
 
     res.redirect('/');
+  });
+});
+
+//After Successful name update return to galleries#view
+router.put('/:gallery_id/images/:image_id', (req, res, next) => {
+  const id = req.params.image_id;
+
+  image.get(id, (err) => {
+    //If error send error and exit.
+    if (err) return res.status(500).send(err);
+
+    //Refresh page with new data;
+    res.redirect('back');
   });
 });
 
