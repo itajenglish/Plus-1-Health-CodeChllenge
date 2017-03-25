@@ -67,7 +67,9 @@
             </div>
 
             <div class="card-action">
-              <a href="#">Delete Photo</a>
+              <form method="POST" action="/galleries/{{gallery_id}}/images/{{id}}?_method=delete">
+                <button class="btn red" type="submit">Delete Photo</button>
+              </form>
             </div>
           </div>
           {{/gallery.images}}

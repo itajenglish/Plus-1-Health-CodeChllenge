@@ -17,3 +17,14 @@ exports.update = (id, caption, cb) => {
     cb(new error.InternalServerError());
   });
 };
+
+exports.delete = (id, cb) => {
+  db.none('DELETE FROM images where id = $1', id)
+  .then(() => {
+    cb(null);
+  })
+  .catch(err => {
+    console.log(err);
+    cb(new error.InternalServerError());
+  });
+};
