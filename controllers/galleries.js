@@ -61,7 +61,7 @@ router.get('/:id/edit', (req, res , next) => {
   });
 });
 
-//Deletes Gallery From model and redirect user to index.
+//Route calls gallery model to delete gallery and realted images.
 router.delete('/:id', (req, res, next) => {
   const id = req.params.id;
    console.log('route hit');
@@ -72,15 +72,30 @@ router.delete('/:id', (req, res, next) => {
   });
 });
 
-//After Successful name update return to galleries#view
+//Route calls image model to update caption in db.
 router.put('/:gallery_id/images/:image_id', (req, res, next) => {
   const id = req.params.image_id;
+  const caption = req.body.caption;
+  console.log(caption);
 
-  image.get(id, (err) => {
+  image.update(id, caption, (err) => {
     //If error send error and exit.
     if (err) return res.status(500).send(err);
 
     //Refresh page with new data;
+    res.redirect('back');
+  });
+});
+
+//Route calls image model to delete specfic image.
+router.delete('/:gallery_id/images/:image_id', (req, res, next) => {
+  const id = req.params.image_id;
+
+  image.delete(id, (err) => {
+    //If error send error and exit.
+    if (err) return res.status(500).send(err);
+
+    //Refresh page.
     res.redirect('back');
   });
 });
