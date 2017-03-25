@@ -27,9 +27,22 @@ router.get('/:id', (req, res, next) => {
     if (err) return res.status(500).send(err);
 
     const gallery = { id, name, images };
-    console.log(gallery);
     //Renders Page To Show Specifc Gallery
     res.render('gallery/show', { gallery });
+  });
+});
+
+//Render Edit Page For Specifc Gallery
+router.get('/:id/edit', (req, res , next) => {
+  const id = req.params.id;
+
+  gallery.get(id, (err, { name }) => {
+    //If error send error and exit.
+    if (err) return res.status(500).send(err);
+
+    const gallery = { id, name };
+    //Renders Page To Show Specifc Gallery
+    res.render('gallery/edit', { gallery });
   });
 });
 

@@ -20,9 +20,9 @@
           <form action="/galleries/{{id}}?_method=delete" method="POST">
             <button class="btn red" type="submit">Delete Gallary</button>
           </form>
-          {{/gallery}}
         </li>
-        <li><a href="/galleries/new" class="waves-effect waves-light btn">Edit Gallary</a></li>
+        <li><a href="/galleries/{{id}}/edit" class="waves-effect waves-light btn">Edit Gallary</a></li>
+        {{/gallery}}
       </ul>
     </div>
   </nav>
