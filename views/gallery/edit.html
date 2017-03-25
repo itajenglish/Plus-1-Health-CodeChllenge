@@ -37,10 +37,10 @@
             <h1 class="center">Edit Gallery Name</h1>
           </div>
           <div class="row">
-            <form class="col s12" method="POST" action="/galleries?_method=put">
+                {{#gallery}}
+            <form class="col s12" method="POST" action="/galleries/{{id}}?_method=put">
               <div class="row">
                 <div class="input-field col s12">
-                  {{#gallery}}
                   <input name="name" type="text" value="{{name}}">
                   <button type="submit" class="btn">Update</button>
                   {{/gallery}}

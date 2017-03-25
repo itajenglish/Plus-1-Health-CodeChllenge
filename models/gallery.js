@@ -61,9 +61,9 @@ exports.delete = (id, cb) => {
 
 //Update Gallery Name in database.
 exports.update = (id, name, cb) => {
-  db.none('UPDATE Galleries set name = $1 WHERE id = $2', name, id)
+  db.none('UPDATE Galleries set name = $1 WHERE id = $2', [name, id])
   .then(() => {
-    console.log('Gallery Name Updated!');
+    cb(null);
   })
   .catch(err => {
     console.log(err);

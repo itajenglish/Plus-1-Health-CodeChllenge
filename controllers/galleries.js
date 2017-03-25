@@ -32,6 +32,20 @@ router.get('/:id', (req, res, next) => {
   });
 });
 
+//Route calls gallery model to update name in db.
+router.put('/:id', (req, res, next) => {
+  const id = req.params.id;
+  const name = req.body.name;
+
+  gallery.update(id, name, (err) => {
+    //If error send error and exit.
+    if (err) return res.status(500).send(err);
+
+    //After Successful name update return to galleries#view
+    res.redirect(`/galleries/${id}`);
+  });
+});
+
 //Render Edit Page For Specifc Gallery
 router.get('/:id/edit', (req, res , next) => {
   const id = req.params.id;
