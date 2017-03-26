@@ -1,7 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const gallery = require('../models/gallery');
-const image = require('../models/image');
+const express = require('express'),
+  router = express.Router(),
+  gallery = require('../models/gallery'),
+  upload = require('../lib/aws/upload'),
+  image = require('../models/image');
 
 //Route calls gallery model to create a new gallery in db.
 router.post('/', (req, res, next) => {
@@ -72,6 +73,12 @@ router.delete('/:id', (req, res, next) => {
     //Redirect to index page after Successful delte.
     res.redirect('/');
   });
+});
+
+//Route calls image model to update caption in db.
+router.post('/:gallery_id/images', upload.array('image',1), (req, res, next) => {
+  console.log(req.files)
+  console.log('Route Hit!');
 });
 
 //Route calls image model to update caption in db.

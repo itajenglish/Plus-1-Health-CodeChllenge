@@ -3,7 +3,8 @@ const express = require('express'),
 app = express(),
 mustache = require('mustache-express'),
 methodOverride = require('method-override'),
-morgan = require('morgan');
+morgan = require('morgan'),
+dotenv = require('dotenv'),
 bdPars = require('body-parser');
 
 //configure express and related packages
@@ -15,6 +16,7 @@ bdPars = require('body-parser');
   app.use(methodOverride('_method')); //method override
   app.use(bdPars.urlencoded({ extended: false })); //body parser
   app.use(bdPars.json()); //body parser
+  dotenv.load();
 
 //start the server
   const PORT = process.env.PORT || 3000;
