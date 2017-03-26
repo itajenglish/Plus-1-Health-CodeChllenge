@@ -16,7 +16,7 @@ bdPars = require('body-parser');
   app.use(methodOverride('_method')); //method override
   app.use(bdPars.urlencoded({ extended: false })); //body parser
   app.use(bdPars.json()); //body parser
-  dotenv.load();
+  dotenv.load(); //Loads .Env file
 
 //start the server
   const PORT = process.env.PORT || 3000;
