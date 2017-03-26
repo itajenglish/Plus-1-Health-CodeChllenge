@@ -76,9 +76,18 @@ router.delete('/:id', (req, res, next) => {
 });
 
 //Route calls image model to update caption in db.
-router.post('/:gallery_id/images', upload.array('image',1), (req, res, next) => {
-  console.log(req.files)
-  console.log('Route Hit!');
+router.post('/:gallery_id/images', upload.single('image'), (req, res, next) => {
+  const caption = req.body.caption;
+  const gallery_id = req.params.gallery_id;
+  const image_url = req.file.location;
+
+  image.create(gallery_id, caption, image_url, (err) => {
+    //If error send error and exit.
+    if (err) return res.status(500).send(err);
+
+    //Refresh page with new data;
+    res.redirect('back');
+  });
 });
 
 //Route calls image model to update caption in db.
