@@ -23,6 +23,9 @@
         </li>
         <li><a href="/galleries/{{id}}/edit" class="waves-effect waves-light btn">Edit Gallary</a></li>
         {{/gallery}}
+        <li>
+          <a class="waves-effect waves-light btn" href="#modal1">Upload Image</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -35,8 +38,7 @@
     <div class="row">
       <div class="col s12">
         {{#gallery}}
-        <h1 class="center">{{name}} Gallery</h1>
-        {{/gallery}}
+        <h1 class="center">{{name}} Gallery</h1> {{/gallery}}
       </div>
       </row>
 
@@ -79,10 +81,33 @@
 
     </div>
   </div>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Upload an image</h4>
+      <form action="#">
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>File</span>
+            <input type="file">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+        <input required placeholder="Caption" name="caption" type="text">
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+      <button type="submit" class="modal-action waves-effect waves-green btn-flat">Upload</button>
+    </div>
+  </form>
+  </div>
   <!-- Script Files -->
   <script src="/scripts/jquery.js"></script>
   <script src="/scripts/materialize.min.js"></script>
-  <script src="/scripts/main.js"></script>
+  <script src="/scripts/gallery.js"></script>
 </body>
 
 </html>
