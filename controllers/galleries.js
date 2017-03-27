@@ -75,7 +75,7 @@ router.delete('/:id', (req, res, next) => {
   });
 });
 
-//Route calls image model to update caption in db.
+//Route calls AWS upload function and image model to insert image_url in db.
 router.post('/:gallery_id/images', upload.single('image'), (req, res, next) => {
   const caption = req.body.caption;
   const gallery_id = req.params.gallery_id;
